@@ -4,10 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Slab">
   <title>Weather</title>
 </head>
 <body>
-  <input type="search" placeholder="Enter a city name here...">
+  <div class="buttons">
+    <input type="search" placeholder="Enter a city name here..." id="search-city">
+    <button type="button" id="degree">°F</button>
+  </div>
+  <div class="container">
+    <div id="weather">
+      <p class="weather"></p>
+      <p class="description"></p>
+      <p class="temperature"></p>
+      <p class="feels-like"></p>
+      <p class="humidity"></p>
+    </div>
+    <div id="city">
+      <h1 id="city-name"></h1>
+    </div>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>
