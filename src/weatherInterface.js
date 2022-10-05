@@ -23,6 +23,7 @@ function changeBackground(weather) {
   } else {
     body.style.background = `url(${normal})`;
   }
+  body.style.backgroundSize = 'cover';
 }
 
 export default function weatherInterface(obj) {
@@ -33,6 +34,7 @@ export default function weatherInterface(obj) {
   const humidity = document.querySelector('.humidity');
   const city = document.getElementById('city-name');
   const weatherImg = document.getElementById('weather-icon');
+  const degree = document.getElementById('degree');
   if (obj.hasOwnProperty('message') && obj.hasOwnProperty('cod')) {
     city.textContent = obj.message;
     weather.textContent = '';
@@ -40,13 +42,14 @@ export default function weatherInterface(obj) {
     temperature.textContent = '';
     feelsLike.textContent = '';
     humidity.textContent = '';
+    weatherImg.src = '';
   } else {
-    city.textContent = `${obj.name}, ${obj.sys.country}`;
-    weather.textContent = obj.weather[0].main;
-    description.textContent = obj.weather[0].description;
-    temperature.textContent = `Temperature: ${obj.main.temp}`;
-    feelsLike.textContent = `Feels like: ${obj.main.feels_like}`;
-    humidity.textContent = `Humidity: ${obj.main.humidity}%`;
+    city.textContent = `${obj.name.toUpperCase()}, ${obj.sys.country}`;
+    weather.textContent = obj.weather[0].main.toUpperCase();
+    description.textContent = obj.weather[0].description.toUpperCase();
+    temperature.textContent = `${obj.main.temp}${degree.textContent}`;
+    feelsLike.textContent = `FEELS LIKE: ${obj.main.feels_like}${degree.textContent}`;
+    humidity.textContent = `HUMIDITY: ${obj.main.humidity}%`;
     weatherImg.src = `http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png`;
     changeBackground(obj.weather[0].main);
   }
